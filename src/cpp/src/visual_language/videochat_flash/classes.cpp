@@ -642,7 +642,8 @@ ov::Tensor cyclic_vit_infer(const ov::Tensor& transpose_features, ov::InferReque
 VisionEncoderVideoChat_Flash::VisionEncoderVideoChat_Flash(
     const std::filesystem::path& model_dir,
     const std::string& device,
-    const ov::AnyMap properties) : VisionEncoder(model_dir, device, properties) {
+    const ov::AnyMap properties)
+    : VisionEncoder(model_dir, device, properties, VisionEncoder::VisionEmbeddingsCompilePolicy::SKIP) {
 
     auto model = utils::singleton_core().read_model(model_dir / "openvino_vision_embeddings_model.xml");
     std::map<std::string, ov::PartialShape> input_shapes;
@@ -685,14 +686,6 @@ VisionEncoderVideoChat_Flash::VisionEncoderVideoChat_Flash(
             return compiled_merge_model.create_infer_request();
         });
     
-    // init 3d_sincos_pos_embed
-    size_t mm_hidden_size = m_vlm_config.mm_hidden_size;
-    size_t mm_local_num_frames = m_vlm_config.mm_local_num_frames;
-    // Can not obtain this from config for now
-    const size_t img_size = 224;
-    const size_t patch_size = 14;
-    size_t grid_size = img_size / patch_size; // 16
-    m_pos_emb = videochat_flash_utils::get_3d_sincos_pos_embed(mm_hidden_size, grid_size, mm_local_num_frames, true);  
 }
 
 VisionEncoderVideoChat_Flash::VisionEncoderVideoChat_Flash(

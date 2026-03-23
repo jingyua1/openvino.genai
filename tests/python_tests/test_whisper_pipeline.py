@@ -3,6 +3,7 @@
 
 import sys
 from patch_pyav_for_servercore import install_av_stub_module_for_windows
+
 install_av_stub_module_for_windows()
 
 import openvino_genai as ov_genai

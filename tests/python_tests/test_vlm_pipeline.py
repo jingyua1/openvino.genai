@@ -112,7 +112,7 @@ def _get_synthetic_video_224x224_tensor_fixture_name_for_model(model_id: str) ->
 
 
 VIDEO_MODELS_WITH_UNSUPPORTED_IMAGE_INPUTS: list[str] = [
-    "optimum-intel-internal-testing/tiny-videochat-flash-qwen", # CVS-182928
+    "optimum-intel-internal-testing/tiny-videochat-flash-qwen",  # CVS-182928
 ]
 
 
@@ -755,7 +755,7 @@ def test_vlm_continuous_batching_generate_vs_add_request(
         synthetic_video_32x32_tensor = request.getfixturevalue(video_fixture_name)
         images_list = [[], [cat_tensor], [cat_tensor]]
         videos_list = [[synthetic_video_32x32_tensor], [synthetic_video_32x32_tensor], []]
-        
+
     else:
         images_list = [[], [cat_tensor]]
         videos_list = [[], []]

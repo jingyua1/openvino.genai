@@ -1,0 +1,45 @@
+test_name,file,line,has_text_input,has_image_input,has_video_input,scope,notes
+test_vlm_pipeline,tests/python_tests/test_vlm_pipeline.py,615,yes,yes,no,conditional,images from fixture can be empty or non-empty
+test_vlm_readonly_image_tensor,tests/python_tests/test_vlm_pipeline.py,635,yes,yes,no,always,readonly image tensor
+test_vlm_continuous_batching_generate_vs_add_request,tests/python_tests/test_vlm_pipeline.py,658,yes,yes,yes,conditional,coverage includes text-only text+image text+video and text+image+video
+test_vlm_continuous_batching_generate_vs_add_request_for_gemma,tests/python_tests/test_vlm_pipeline.py,726,yes,yes,no,conditional,images list contains empty and non-empty branches
+test_vlm_continuous_batching_vs_stateful,tests/python_tests/test_vlm_pipeline.py,760,yes,yes,no,conditional,images list contains empty and non-empty branches
+test_vlm_continuous_batching_vs_stateful_chat_history,tests/python_tests/test_vlm_pipeline.py,791,yes,yes,no,always,image is always provided
+test_vlm_pipeline_chat,tests/python_tests/test_vlm_pipeline.py,878,yes,yes,no,conditional,iteration includes empty and non-empty image turns
+test_vlm_pipeline_start_chat_vs_chat_history,tests/python_tests/test_vlm_pipeline.py,918,yes,yes,no,conditional,iteration includes empty and non-empty image turns
+test_vlm_pipeline_chat_history_multipart_content,tests/python_tests/test_vlm_pipeline.py,978,yes,yes,no,conditional,iteration includes empty and non-empty image turns
+test_vlm_pipeline_chat_npu,tests/python_tests/test_vlm_pipeline.py,1057,yes,yes,no,conditional,iteration includes empty and non-empty image turns
+test_vlm_pipeline_chat_with_video,tests/python_tests/test_vlm_pipeline.py,1089,yes,yes,yes,conditional,mixed turns include text-only text+video and text+image+video
+test_vlm_get_tokenizer,tests/python_tests/test_vlm_pipeline.py,1140,no,no,no,always,no generate inference call
+test_sampling,tests/python_tests/test_vlm_pipeline.py,1154,yes,yes,no,always,image via image=cat_tensor
+test_perf_metrics,tests/python_tests/test_vlm_pipeline.py,1164,yes,yes,no,always,images=[cat_tensor]
+test_vlm_npu_no_exception,tests/python_tests/test_vlm_pipeline.py,1232,yes,yes,no,always,images=[cat_tensor]
+test_vlm_npu_no_image,tests/python_tests/test_vlm_pipeline.py,1253,yes,no,no,always,text only
+test_vlm_npu_auto_config,tests/python_tests/test_vlm_pipeline.py,1264,yes,yes,no,always,images=[cat_tensor]
+test_vlm_npu_multiple_images,tests/python_tests/test_vlm_pipeline.py,1282,yes,yes,no,always,multiple images
+test_vlm_pipeline_chat_streamer_cancel_second_generate,tests/python_tests/test_vlm_pipeline.py,1293,yes,yes,yes,conditional,depends on model type and image_sequence fixture
+test_start_chat_clears_history,tests/python_tests/test_vlm_pipeline.py,1370,yes,yes,no,conditional,image_sequence can be empty or non-empty
+test_start_chat_clears_history_cb_api,tests/python_tests/test_vlm_pipeline.py,1395,yes,yes,no,conditional,image_sequence can be empty or non-empty
+test_vlm_pipeline_chat_streamer_cancel_first_generate,tests/python_tests/test_vlm_pipeline.py,1420,yes,yes,yes,conditional,depends on model type and image_sequence fixture
+test_model_tags_representation,tests/python_tests/test_vlm_pipeline.py,1605,yes,yes,yes,conditional,vision_type parameter covers IMAGE and VIDEO
+test_model_tags_prepend_native,tests/python_tests/test_vlm_pipeline.py,1660,yes,yes,yes,conditional,vision_type parameter covers IMAGE and VIDEO
+test_model_tags_prepend_universal,tests/python_tests/test_vlm_pipeline.py,1697,yes,yes,yes,conditional,vision_type parameter covers IMAGE and VIDEO
+test_model_tags_append,tests/python_tests/test_vlm_pipeline.py,1733,yes,yes,yes,conditional,vision_type parameter covers IMAGE and VIDEO
+test_model_tags_same_reference,tests/python_tests/test_vlm_pipeline.py,1784,yes,yes,yes,conditional,vision_type parameter covers IMAGE and VIDEO
+test_model_tags_older,tests/python_tests/test_vlm_pipeline.py,1817,yes,yes,yes,conditional,vision_type parameter covers IMAGE and VIDEO
+test_model_tags_missing_universal,tests/python_tests/test_vlm_pipeline.py,1838,yes,no,no,always,prompt only expected RuntimeError
+test_model_tags_missing_native,tests/python_tests/test_vlm_pipeline.py,1846,yes,no,no,always,prompt only expected RuntimeError
+test_vlm_pipeline_match_optimum_with_resolutions,tests/python_tests/test_vlm_pipeline.py,2150,yes,yes,yes,conditional,has_image and has_video are parameterized
+test_cdpruner_functionality,tests/python_tests/test_vlm_pipeline.py,2196,yes,yes,no,always,images=[cat_tensor]
+test_cdpruner_with_multiple_images,tests/python_tests/test_vlm_pipeline.py,2212,yes,yes,no,always,multiple images
+test_cdpruner_chat_mode,tests/python_tests/test_vlm_pipeline.py,2233,yes,yes,no,always,turns 1/2 with image turn 3 text-only
+test_cdpruner_chat_history_api,tests/python_tests/test_vlm_pipeline.py,2260,yes,yes,no,always,all turns include images
+test_cdpruner_with_relevance_weight,tests/python_tests/test_vlm_pipeline.py,2299,yes,yes,no,always,images=[cat_tensor]
+test_cdpruner_disable_after_enable,tests/python_tests/test_vlm_pipeline.py,2313,yes,yes,no,always,baseline and compare both with image
+test_cdpruner_continuous_batching,tests/python_tests/test_vlm_pipeline.py,2338,yes,yes,no,always,baseline and pruned both with image
+test_cdpruner_continuous_batching_chat_mode,tests/python_tests/test_vlm_pipeline.py,2369,yes,yes,no,always,turns 1/2 with image turn 3 text-only
+test_cdpruner_continuous_batching_chat_history,tests/python_tests/test_vlm_pipeline.py,2421,yes,yes,no,always,all turns include images
+test_vlm_prompt_lookup_functionality,tests/python_tests/test_vlm_pipeline.py,2489,yes,yes,no,always,both runs use images=[cat_tensor]
+test_videochatflash_rejects_image_input,tests/python_tests/test_vlm_pipeline.py,2518,yes,yes,no,always,image path expected RuntimeError
+test_videochatflash_text_video_generate,tests/python_tests/test_vlm_pipeline.py,2523,yes,no,yes,always,videos=[synthetic_video_224x224_tensor]
+test_vlm_continuous_batching_generate_videochat,tests/python_tests/test_vlm_pipeline.py,2550,yes,no,yes,always,images empty videos non-empty
